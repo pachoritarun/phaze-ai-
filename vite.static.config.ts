@@ -9,7 +9,7 @@ export default defineConfig({
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
-  base: "./",
+  base: "/sessions/",
   build: {
     outDir: "dist-static",
     emptyOutDir: true,

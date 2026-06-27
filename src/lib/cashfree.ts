@@ -29,7 +29,7 @@ const getCashfree = async () => {
 
 export async function initiateCashfreePayment(registrant: Registrant): Promise<boolean> {
   const amount = TICKETS[registrant.ticket].amountINR;
-  const API_URL = `http://${window.location.hostname}:5000`;
+  const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5000`;
 
   try {
     // 1. Create order on our backend

@@ -25,7 +25,7 @@ function AdminPage() {
 
   useEffect(() => {
     if (!isAuthenticated) return;
-    const API_URL = `http://${window.location.hostname}:5000`;
+    const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5000`;
     fetch(`${API_URL}/api/registrations`)
       .then((res) => res.json())
       .then((json) => {
