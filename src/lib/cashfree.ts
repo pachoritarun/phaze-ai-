@@ -63,7 +63,7 @@ export async function initiateCashfreePayment(
     // We open the checkout
     let checkoutOptions = {
       paymentSessionId: paymentSessionId,
-      redirectTarget: "_modal", // Opens as modal
+      redirectTarget: "_self", // Redirect entirely to Cashfree to prevent any UI conflicts or freezing
     };
     
     if (onReady) onReady();
