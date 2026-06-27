@@ -1,8 +1,8 @@
 // Ticket → amount mapping (in INR)
 export const TICKETS = {
-  session1: { label: "Session 1 — AI for Business", amountINR: 1 },
-  session2: { label: "Session 2 — AI for Content & Social", amountINR: 1 },
-  combined: { label: "Both sessions (Combined)", amountINR: 1 },
+  session1: { label: "Session 1 — AI for Business", amountINR: 1999 },
+  session2: { label: "Session 2 — AI for Content & Social", amountINR: 1999 },
+  combined: { label: "Both sessions (Combined)", amountINR: 2999 },
 } as const;
 
 export type TicketId = keyof typeof TICKETS;
