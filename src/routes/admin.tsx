@@ -22,6 +22,31 @@ function AdminPage() {
   const [authPassword, setAuthPassword] = useState("");
   const [data, setData] = useState<Registration[]>([]);
   const [loading, setLoading] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+
+  const handleDelete = async (id: number) => {
+    if (!confirm("Are you sure you want to delete this registration? This cannot be undone.")) return;
+    
+    setDeletingId(id);
+    const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5050`;
+    
+    try {
+      const res = await fetch(`${API_URL}/api/registrations/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": authPassword }
+      });
+      
+      if (!res.ok) throw new Error("Failed to delete");
+      
+      // Update UI instantly
+      setData(data.filter(reg => reg.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete registration.");
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   useEffect(() => {
     if (!authPassword) return;
@@ -86,6 +111,7 @@ function AdminPage() {
                 <th className="px-4 py-3 font-medium">Amount</th>
                 <th className="px-4 py-3 font-medium">Status</th>
                 <th className="px-4 py-3 font-medium">Date</th>
+                <th className="px-4 py-3 font-medium text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -122,6 +148,15 @@ function AdminPage() {
                     </td>
                     <td className="px-4 py-3 text-muted-foreground">
                       {new Date(reg.created_at).toLocaleString()}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <button
+                        onClick={() => handleDelete(reg.id)}
+                        disabled={deletingId === reg.id}
+                        className="text-xs font-medium text-red-500 hover:text-red-600 transition-colors disabled:opacity-50"
+                      >
+                        {deletingId === reg.id ? "Deleting..." : "Delete"}
+                      </button>
                     </td>
                   </tr>
                 ))

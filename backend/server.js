@@ -179,6 +179,24 @@ app.get('/api/registrations', async (req, res) => {
   }
 });
 
+// 4. Delete registration
+app.delete('/api/registrations/:id', async (req, res) => {
+  try {
+    const auth = req.headers.authorization;
+    if (!auth || auth !== process.env.ADMIN_PASSWORD) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    
+    const { id } = req.params;
+    const pool = getPool();
+    await pool.query('DELETE FROM registrations WHERE id = ?', [id]);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting registration:', error);
+    res.status(500).json({ error: 'Failed to delete registration' });
+  }
+});
+
 // Initialize DB and start server
 initDB().then(() => {
   app.listen(PORT, () => {
