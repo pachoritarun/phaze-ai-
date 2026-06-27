@@ -33,7 +33,8 @@ export async function initiateCashfreePayment(registrant: Registrant): Promise<b
 
   try {
     // 1. Create order on our backend
-    const returnUrl = `${window.location.origin}/payment/status?order_id={order_id}`;
+    const basePath = import.meta.env.BASE_URL; // will be "/sessions/"
+    const returnUrl = `${window.location.origin}${basePath}payment/status?order_id={order_id}`;
     
     const res = await fetch(`${API_URL}/api/create-order`, {
       method: "POST",
