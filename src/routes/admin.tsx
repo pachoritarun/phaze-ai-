@@ -19,33 +19,41 @@ type Registration = {
 
 function AdminPage() {
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authPassword, setAuthPassword] = useState("");
   const [data, setData] = useState<Registration[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!isAuthenticated) return;
+    if (!authPassword) return;
+    setLoading(true);
     const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5050`;
-    fetch(`${API_URL}/api/registrations`)
-      .then((res) => res.json())
+    fetch(`${API_URL}/api/registrations`, {
+      headers: { "Authorization": authPassword }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Unauthorized");
+        }
+        return res.json();
+      })
       .then((json) => {
         setData(json);
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
+        alert("Incorrect password");
+        setAuthPassword("");
         setLoading(false);
       });
-  }, [isAuthenticated]);
+  }, [authPassword]);
 
-  if (!isAuthenticated) {
+  if (!authPassword) {
     return (
       <div className="min-h-screen grid place-items-center bg-surface p-6 font-sans">
         <form onSubmit={(e) => {
           e.preventDefault();
-          // Extremely basic client-side protection for demo purposes
-          if (password === "admin123") setIsAuthenticated(true);
-          else alert("Incorrect password");
+          setAuthPassword(password);
         }} className="bg-background p-8 rounded-xl shadow-sm border border-border w-full max-w-sm">
           <h2 className="text-2xl font-bold mb-4 font-display">Admin Login</h2>
           <input 

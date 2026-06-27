@@ -165,6 +165,11 @@ app.post('/api/verify-payment', async (req, res) => {
 // 3. Get all registrations (For Admin Viewer)
 app.get('/api/registrations', async (req, res) => {
   try {
+    const auth = req.headers.authorization;
+    if (!auth || auth !== process.env.ADMIN_PASSWORD) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    
     const pool = getPool();
     const [rows] = await pool.query('SELECT * FROM registrations ORDER BY created_at DESC');
     res.json(rows);
