@@ -23,7 +23,7 @@ function PaymentStatus() {
       return;
     }
 
-    const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5000`;
+    const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5050`;
     let pollCount = 0;
     const maxPolls = 10;
     let timeoutId: NodeJS.Timeout;
