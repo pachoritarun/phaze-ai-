@@ -15,16 +15,18 @@ export type Registrant = {
 };
 
 // Cashfree Web SDK
-let cashfree: any;
-export const getCashfree = async () => {
-  if (!cashfree) {
-    // @ts-ignore
-    const { load } = await import('@cashfreepayments/cashfree-js');
-    cashfree = await load({
-      mode: "production", // Changed to production
-    });
+let cashfreePromise: Promise<any> | null = null;
+export const getCashfree = () => {
+  if (!cashfreePromise) {
+    cashfreePromise = (async () => {
+      // @ts-ignore
+      const { load } = await import('@cashfreepayments/cashfree-js');
+      return await load({
+        mode: "production", // Changed to production
+      });
+    })();
   }
-  return cashfree;
+  return cashfreePromise;
 };
 
 export async function initiateCashfreePayment(registrant: Registrant): Promise<boolean> {
