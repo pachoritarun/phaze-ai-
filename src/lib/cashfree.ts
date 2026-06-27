@@ -77,7 +77,8 @@ export async function initiateCashfreePayment(
         }
         if(result.redirect){
             console.log("Payment will be redirected");
-            resolve(false);
+            // DO NOT resolve(false) here! The browser is navigating away to Cashfree.
+            // Let it hang so no failure alerts are triggered.
         }
         if(result.paymentDetails){
             console.log("Payment has been completed", result.paymentDetails);
