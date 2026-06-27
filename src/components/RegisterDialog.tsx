@@ -67,7 +67,10 @@ export function RegisterDialog() {
     setErrors({});
     setSubmitting(true);
     try {
-      const success = await initiateCashfreePayment({ ...parsed.data, ticket });
+      const success = await initiateCashfreePayment(
+        { ...parsed.data, ticket },
+        () => setOpen(false) // Close this dialog exactly when Cashfree is ready to prevent DOM overlap/blank screen
+      );
       if (success) {
         // Redirect manually since Cashfree modal won't redirect the main page for some payment methods
         window.location.href = "/payment/status";

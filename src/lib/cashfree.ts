@@ -29,7 +29,10 @@ export const getCashfree = () => {
   return cashfreePromise;
 };
 
-export async function initiateCashfreePayment(registrant: Registrant): Promise<boolean> {
+export async function initiateCashfreePayment(
+  registrant: Registrant,
+  onReady?: () => void
+): Promise<boolean> {
   const amount = TICKETS[registrant.ticket].amountINR;
   const API_URL = import.meta.env.PROD ? "/sessions-api" : `http://${window.location.hostname}:5050`;
 
@@ -62,6 +65,8 @@ export async function initiateCashfreePayment(registrant: Registrant): Promise<b
       paymentSessionId: paymentSessionId,
       redirectTarget: "_modal", // Opens as modal
     };
+    
+    if (onReady) onReady();
     
     // Wrap checkout in a promise
     return new Promise((resolve) => {
