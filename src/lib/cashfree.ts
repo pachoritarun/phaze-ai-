@@ -16,7 +16,7 @@ export type Registrant = {
 
 // Cashfree Web SDK
 let cashfree: any;
-const getCashfree = async () => {
+export const getCashfree = async () => {
   if (!cashfree) {
     // @ts-ignore
     const { load } = await import('@cashfreepayments/cashfree-js');

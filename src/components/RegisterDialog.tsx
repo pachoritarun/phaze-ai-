@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { initiateCashfreePayment, TICKETS, type TicketId } from "@/lib/cashfree";
+import { initiateCashfreePayment, getCashfree, TICKETS, type TicketId } from "@/lib/cashfree";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your full name").max(80),
@@ -41,6 +41,8 @@ export function RegisterDialog() {
       if (detail?.ticket) setTicket(detail.ticket);
       setErrors({});
       setOpen(true);
+      // Preload the Cashfree SDK in the background while user fills the form!
+      getCashfree().catch(console.error);
     };
     window.addEventListener("open-register", handler);
     return () => window.removeEventListener("open-register", handler);
