@@ -435,7 +435,7 @@ function Trainer() {
                 href="https://www.instagram.com/manthanjethwani/" 
                 target="_blank" 
                 rel="noreferrer"
-                className="mt-2 block text-lg text-accent-lime hover:underline"
+                className="mt-2 block text-lg text-foreground hover:underline"
               >
                 @manthanjethwani ↗
               </a>
@@ -473,7 +473,7 @@ function Trainer() {
                 href="https://www.instagram.com/ai.noobstoninjas/" 
                 target="_blank" 
                 rel="noreferrer"
-                className="mt-2 block text-lg text-accent-lime hover:underline"
+                className="mt-2 block text-lg text-foreground hover:underline"
               >
                 @ai.noobstoninjas ↗
               </a>
