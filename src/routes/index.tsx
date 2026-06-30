@@ -257,23 +257,26 @@ function Sessions() {
       tag: "Session 1",
       time: "12:00 PM – 2:00 PM",
       title: "AI for Business",
+      ticketId: "session1",
       points: [
-        "What AI actually is, why it matters now, and how it compares to past tech shifts (internet, smartphones, cloud)",
-        "Using AI tools: ChatGPT, Gemini, Claude, NotebookLM",
-        "Building AI agents for every department — HR, Content, SEO/Ads, Operations, Sales",
-        "Common misconceptions, and what NOT to do with AI",
-        "Comparing AI implementation to hiring a new employee — onboarding and time, not magic",
+        "Why some businesses are moving 3x faster on the same team — and what they're actually doing differently",
+        "Turn Claude into a working employee: set it up once, delegate to it daily",
+        "Department by department — how HR, sales, ops, and content teams are using AI agents right now (before/after, not theory)",
+        "The onboarding mindset: AI isn't magic, it's a new hire — here's how long it actually takes to get value out of it",
+        "What not to hand AI unsupervised, and the one check every business owner should run before publishing AI output",
       ],
     },
     {
       tag: "Session 2",
       time: "3:00 PM – 5:00 PM",
-      title: "AI for Content & Social Media Scaling",
+      title: "AI for Content & Social Media",
+      ticketId: "session2",
       points: [
-        "Finding content ideas that actually go viral",
-        "Using AI to generate creatives, ads, and social posts in minutes",
-        "7 Claude skills for content creation, repurposing, and distribution",
-        "Building a weekly content system — not just one-off posts",
+        "How to find content ideas that spread — what the algorithm rewards, and how to reverse-engineer it with AI",
+        "Go from one idea to 5 platform-ready posts in under 10 minutes — live, in the room",
+        "Generate creatives, ad copy, and social visuals without a designer or agency",
+        "Build a content system you can run weekly — not a one-off lucky post, an actual repeatable engine",
+        "Yashika's personal workflow: how she manages 700K+ across platforms with AI doing the heavy lifting",
       ],
     },
   ];
@@ -286,36 +289,61 @@ function Sessions() {
             <div className="text-xs uppercase tracking-widest text-muted-foreground">Two sessions, one day</div>
             <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">Session breakdown.</h2>
           </div>
-          <div className="hidden text-right text-sm text-muted-foreground md:block">
-            Save ₹999<br />
-            <span className="text-foreground">when you book combined.</span>
-          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           {sessions.map((s, i) => (
             <article
               key={s.tag}
-              className="group relative flex flex-col rounded-2xl border border-border bg-surface-elevated p-8 transition hover:border-foreground/30"
+              className="group relative flex flex-col rounded-2xl border border-border bg-surface-elevated p-8 transition hover:border-foreground/30 overflow-hidden"
             >
               <div className="flex items-center justify-between">
-                <span className="rounded-2xl bg-foreground px-3 py-1 text-xs font-medium text-background">
+                <span className="rounded-full bg-foreground px-4 py-1 text-xs font-semibold text-background">
                   {s.tag}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">{s.time}</span>
+                <span className="font-mono text-sm font-medium text-muted-foreground">{s.time}</span>
               </div>
-              <h3 className="mt-8 font-display text-2xl font-semibold md:text-3xl">{s.title}</h3>
-              <ul className="mt-6 space-y-3 text-muted-foreground">
+              <h3 className="mt-8 font-display text-3xl font-semibold">{s.title}</h3>
+              <ul className="mt-8 space-y-4 text-muted-foreground flex-grow relative z-10">
                 {s.points.map((p) => (
-                  <li key={p} className="flex gap-3">
-                    <span className="mt-2.5 h-1 w-3 shrink-0 bg-foreground" />
-                    <span className="text-[15px] leading-relaxed">{p}</span>
+                  <li key={p} className="flex gap-4 items-start">
+                    <span className="mt-2.5 h-[3px] w-4 shrink-0 bg-foreground rounded-full" />
+                    <span className="text-base leading-relaxed text-foreground/80">{p}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 font-mono text-6xl font-bold text-muted/40">0{i + 1}</div>
+              
+              <div className="mt-12 flex justify-between items-end relative z-10">
+                <div className="font-display text-8xl font-bold text-muted/30 select-none">
+                  0{i + 1}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => openRegister(s.ticketId as any)}
+                  className="rounded-xl bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition hover:bg-foreground/90"
+                >
+                  Book now →
+                </button>
+              </div>
             </article>
           ))}
+        </div>
+
+        {/* Combined Session Banner */}
+        <div className="mt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 rounded-2xl bg-[#111111] p-8 md:p-10 border border-foreground/10 text-white">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-widest text-white/50 mb-3">Combined Session</div>
+            <h3 className="font-display text-2xl md:text-3xl font-semibold text-white">
+              Book both sessions and save ₹999
+            </h3>
+          </div>
+          <button
+            type="button"
+            onClick={() => openRegister("combined")}
+            className="shrink-0 w-full md:w-auto rounded-xl bg-white px-8 py-4 text-sm font-bold text-black transition hover:bg-white/90"
+          >
+            Book combined →
+          </button>
         </div>
       </div>
     </section>
