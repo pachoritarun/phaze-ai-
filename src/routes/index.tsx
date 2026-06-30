@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import phazeLogo from "@/assets/phaze-ai-logo.png";
 import jecrcLogo from "@/assets/jecrc-logo.png";
 import { RegisterDialog, openRegister } from "@/components/RegisterDialog";
+import manthanImg from "@/assets/manthan.jpeg";
+import yashikaImg from "@/assets/yashika.jpeg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -422,14 +424,7 @@ function Trainer() {
         <div className="grid items-start gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-surface">
-              <div className="grid h-full w-full place-items-center text-muted-foreground">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 grid h-24 w-24 place-items-center rounded-2xl bg-foreground/10 font-display text-3xl text-foreground">
-                    MJ
-                  </div>
-                  <div className="text-sm uppercase tracking-widest">Photo placeholder</div>
-                </div>
-              </div>
+              <img src={manthanImg} alt="Manthan Jethwani" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="md:col-span-7">
@@ -505,14 +500,7 @@ function Trainer() {
           </div>
           <div className="md:col-span-5 md:order-1">
             <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-surface">
-              <div className="grid h-full w-full place-items-center text-muted-foreground">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 grid h-24 w-24 place-items-center rounded-2xl bg-foreground/10 font-display text-3xl text-foreground">
-                    YS
-                  </div>
-                  <div className="text-sm uppercase tracking-widest">Photo placeholder</div>
-                </div>
-              </div>
+              <img src={yashikaImg} alt="Yashika Sadhwani" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
