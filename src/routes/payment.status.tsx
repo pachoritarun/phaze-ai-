@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, useRef } from "react";
 
 export const Route = createFileRoute("/payment/status")({
@@ -6,6 +6,7 @@ export const Route = createFileRoute("/payment/status")({
 });
 
 function PaymentStatus() {
+  const navigate = useNavigate();
   const [status, setStatus] = useState<"loading" | "success" | "failed">("loading");
   
   const hasVerified = useRef(false);
@@ -38,6 +39,7 @@ function PaymentStatus() {
         .then((data) => {
           if (data.status === "PAID") {
             setStatus("success");
+            window.location.href = import.meta.env.BASE_URL + "thank-you";
           } else if (data.status === "PENDING" && pollCount < maxPolls) {
             pollCount++;
             timeoutId = setTimeout(verify, 2000);
@@ -69,22 +71,10 @@ function PaymentStatus() {
         )}
 
         {status === "success" && (
-          <div className="py-8 flex flex-col items-center">
-            <div className="h-20 w-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-6">
-              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold font-display mb-3">Payment Successful!</h2>
-            <p className="text-muted-foreground mb-8">
-              Your seat is officially reserved. We've sent a confirmation receipt to your email address.
-            </p>
-            <Link
-              to="/"
-              className="w-full inline-block rounded-xl bg-foreground px-6 py-4 text-sm font-semibold text-background transition hover:opacity-90"
-            >
-              Return to Homepage
-            </Link>
+          <div className="py-12">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-foreground border-r-transparent mb-4"></div>
+            <h2 className="text-xl font-bold font-display">Redirecting...</h2>
+            <p className="text-muted-foreground mt-2">Taking you to your receipt.</p>
           </div>
         )}
 
