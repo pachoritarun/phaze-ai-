@@ -475,12 +475,12 @@ function Trainer() {
             <h3 className="mt-3 font-display text-3xl font-semibold md:text-4xl">
               Yashika Sadhwani
               <a 
-                href="https://www.instagram.com/ainoobstoninjas/" 
+                href="https://www.instagram.com/ai.noobstoninjas/" 
                 target="_blank" 
                 rel="noreferrer"
                 className="mt-2 block text-lg text-accent-lime hover:underline"
               >
-                @ainoobstoninjas ↗
+                @ai.noobstoninjas ↗
               </a>
               <span className="mt-1 block text-muted-foreground text-2xl md:text-3xl">AI Educator & Creator</span>
             </h3>
