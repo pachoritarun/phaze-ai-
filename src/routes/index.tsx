@@ -436,12 +436,20 @@ function Trainer() {
             <div className="text-xs uppercase tracking-widest text-muted-foreground">Lead Trainer</div>
             <h3 className="mt-3 font-display text-3xl font-semibold md:text-4xl">
               Manthan Jethwani
-              <span className="block text-muted-foreground text-2xl md:text-3xl">Founder, Phaze AI</span>
+              <a 
+                href="https://www.instagram.com/manthanjethwani/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="mt-2 block text-lg text-accent-lime hover:underline"
+              >
+                @manthanjethwani ↗
+              </a>
+              <span className="mt-1 block text-muted-foreground text-2xl md:text-3xl">Founder, Phaze AI</span>
             </h3>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="rounded-2xl border border-border bg-surface-elevated p-4">
-                <div className="font-display text-3xl font-bold">100+</div>
+                <div className="font-display text-3xl font-bold">250+</div>
                 <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Businesses consulted</div>
               </div>
               <div className="rounded-2xl border border-border bg-surface-elevated p-4">
@@ -451,13 +459,10 @@ function Trainer() {
             </div>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Manthan runs Phaze AI — consulting 100+ businesses and implementing real AI
-              solutions inside their systems: custom agents, content workflows, sales and
-              operations automation.
+              Manthan runs Phaze AI — consulting 250+ businesses and implementing real AI solutions inside their systems: custom agents, content workflows, sales and operations automation.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              This session is built from real implementation work — the same playbooks used
-              with paying clients, simplified for a room of business owners.
+              This session is built from real implementation work — the same playbooks used with paying clients, simplified for a room of business owners.
             </p>
           </div>
         </div>
@@ -469,27 +474,33 @@ function Trainer() {
             <div className="text-xs uppercase tracking-widest text-muted-foreground">Guest Trainer</div>
             <h3 className="mt-3 font-display text-3xl font-semibold md:text-4xl">
               Yashika Sadhwani
-              <span className="block text-muted-foreground text-2xl md:text-3xl">AI Influencer & Creator</span>
+              <a 
+                href="https://www.instagram.com/ainoobstoninjas/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="mt-2 block text-lg text-accent-lime hover:underline"
+              >
+                @ainoobstoninjas ↗
+              </a>
+              <span className="mt-1 block text-muted-foreground text-2xl md:text-3xl">AI Educator & Creator</span>
             </h3>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="rounded-2xl border border-border bg-surface-elevated p-4">
-                <div className="font-display text-3xl font-bold">200K+</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Followers on Instagram</div>
+                <div className="font-display text-3xl font-bold">700K+</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Followers across platforms</div>
               </div>
               <div className="rounded-2xl border border-border bg-surface-elevated p-4">
-                <div className="font-display text-3xl font-bold">AI</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Content & creator economy</div>
+                <div className="font-display text-3xl font-bold">BCG · Zomato</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">Previously</div>
               </div>
             </div>
 
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Yashika is one of India's leading AI content creators — breaking down AI tools,
-              workflows and trends to a community of 200K+ on Instagram.
+              Yashika is an AI educator and creator with 700K+ followers across platforms — previously at BCG and Zomato, now building one of India's largest communities around AI, content and marketing.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              She joins as a guest trainer for the content & social session, sharing exactly
-              how she uses AI to create, scale and stay ahead as a creator.
+              In this session she shares the exact workflows she uses to create high-converting content, ad creatives and copy using AI — fast and at scale.
             </p>
           </div>
           <div className="md:col-span-5 md:order-1">
